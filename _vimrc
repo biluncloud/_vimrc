@@ -676,7 +676,7 @@ colo desertEx
 
 " 下面的是用Source Explorer
 " // The switch of the Source Explorer 
-nmap <F8> :SrcExplToggle<CR> 
+nmap <F8> :SrcExplToggle<CR>
 
 " // Set the height of Source Explorer window 
 let g:SrcExpl_winHeight = 8 
@@ -781,7 +781,7 @@ nmap <leader>o :LookupFile<CR>
 
 " **********************************************************
 " 下面是ctags设置
-nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
+nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " **********************************************************
 " 下面是cscope设置
@@ -807,4 +807,15 @@ function Do_CsTag()
 endfunction
 
 nmap <leader>cs :call Do_CsTag()<CR>
+
+" **********************************************************
+" 下面是搜索选中文字设置
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+function! s:VSetSearch()
+let temp = @s
+norm! gv"sy
+let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+let @s = temp
+endfunction
 
