@@ -735,7 +735,7 @@ map <F4> :call ToggleSketch()<CR>
 " **********************************************************
 " 这里是LookupFile的配置
 let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
-let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreserveLastPattern = 1        "保存上次查找的字符串
 let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
 let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
 let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
@@ -775,3 +775,33 @@ nmap <leader>xroot :call SetSpecifiedPathTheRoot()<CR>
 nmap <leader>o :LookupFile<CR>
 
 " **********************************************************
+
+
+" **********************************************************
+" 下面是ctags设置
+nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
+
+" **********************************************************
+" 下面是cscope设置
+if has("cscope")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set csto=0
+    set cst
+    set csverb
+endif
+
+function Do_CsTag()
+    if(executable('cscope') && has("cscope") )
+        "if(g:iswindows!=1)
+        silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        "else
+        "    silent! execute "!dir /b *.c,*.cpp >> cscope.files"
+        "endif
+        silent! execute "!cscope -bkq"
+        if filereadable("cscope.out")
+            execute "cs add cscope.out"
+        endif
+    endif
+endf
+
+nmap <leader>cs :call Do_CsTag()<CR>
