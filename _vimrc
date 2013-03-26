@@ -107,7 +107,7 @@ endif
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "set font
-"set guifont=Nsimsun
+set guifont=Consolas:h10
 
 "if you use vim in tty,
 "'uxterm -cjk' or putty with option 'Treat CJK ambiguous characters as wide' on
@@ -670,7 +670,8 @@ map <F2> :%s/\s*$//g<cr>:noh<cr>''
 ino <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
 
 "colo Evening
-colo developer
+colo desertEx
+"colo developer
 
 " 下面的是用Source Explorer
 " // The switch of the Source Explorer 
@@ -802,6 +803,7 @@ function Do_CsTag()
             execute "cs add cscope.out"
         endif
     endif
-endf
+endfunction
 
 nmap <leader>cs :call Do_CsTag()<CR>
+
