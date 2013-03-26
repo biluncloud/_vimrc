@@ -108,6 +108,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "set font
 set guifont=Consolas:h10
+"set guifont=YaHei\ Consolas\ Hybrid
 
 "if you use vim in tty,
 "'uxterm -cjk' or putty with option 'Treat CJK ambiguous characters as wide' on
@@ -714,16 +715,16 @@ let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
 let g:SrcExpl_updateTagsKey = "<F12>" 
 
 " Open and close all the three plugins on the same time 
-nmap <F8>   :TrinityToggleAll<CR> 
+nmap <F8>   :TrinityToggleAll<CR>
 
 " Open and close the srcexpl.vim separately 
-nmap <F9>   :TrinityToggleSourceExplorer<CR> 
+nmap <F9>   :TrinityToggleSourceExplorer<CR>
 
 " Open and close the taglist.vim separately 
-nmap <F10>  :TrinityToggleTagList<CR> 
+nmap <F10>  :TrinityToggleTagList<CR>
 
 " Open and close the NERD_tree.vim separately 
-nmap <F11>  :TrinityToggleNERDTree<CR> 
+nmap <F11>  :TrinityToggleNERDTree<CR>
 
 " Open and close Stetch.vim
 map <F4> :call ToggleSketch()<CR>
@@ -794,7 +795,7 @@ endif
 function Do_CsTag()
     if(executable('cscope') && has("cscope") )
         "if(g:iswindows!=1)
-        silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.bat' > cscope.files"
         "else
         "    silent! execute "!dir /b *.c,*.cpp >> cscope.files"
         "endif
