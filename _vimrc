@@ -407,7 +407,7 @@ endif
 " => Text option
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " python script
-"set expandtab
+set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -728,5 +728,50 @@ nmap <F11>  :TrinityToggleNERDTree<CR>
 map <F4> :call ToggleSketch()<CR>
 
 " For ctags
-set tags=tags; 
-set autochdir
+" Too slow when opening a file, so comment it now
+"set tags=tags; 
+"set autochdir
+
+" **********************************************************
+" 这里是LookupFile的配置
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+if filereadable("./filenametags")                "设置tag文件的名字
+    let g:LookupFile_TagExpr = '"./filenametags"'
+endif
+
+" 配置快捷键
+" 指定英文逗号作为<leader>键
+let mapleader=","
+ 
+" 在指定目录生成filenametags，并使lookupfile将这个文件作为查找源
+function SetRootOfTheProject(path)
+    " 进入指定目录
+    exe 'cd '.a:path
+    " 生成文件标签
+    exe '!genfiletags'
+    " 获取标签文件的路径
+    let tagFilePath = genutils#CleanupFileName(a:path.'/filenametags')
+    " 设置LookupFile插件的全局变量，使之以上面生成的标签文件作为查找源
+    " 替换\为/
+    let tagFilePath = substitute(tagFilePath, '\\', "/", "g")
+    exe "let g:LookupFile_TagExpr='\"" . tagFilePath . "\"'"
+endfunction
+" 设置当前位置为工程的根目录
+function SetHereTheRoot()
+    call SetRootOfTheProject('.')
+endfunction
+nmap <leader>root :call SetHereTheRoot()<CR>
+" 从用户的输入获取指定路径，并设置为工程的根目录
+function SetSpecifiedPathTheRoot()
+    call SetRootOfTheProject(input('请输入工程根目录的路径：'))
+endfunction
+nmap <leader>xroot :call SetSpecifiedPathTheRoot()<CR>
+ 
+" 使用LookupFile打开文件
+nmap <leader>o :LookupFile<CR>
+
+" **********************************************************
