@@ -670,10 +670,6 @@ map <F2> :%s/\s*$//g<cr>:noh<cr>''
 "Super paste
 ino <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
 
-"colo Evening
-colo desertEx
-"colo developer
-
 " 下面的是用Source Explorer
 " // The switch of the Source Explorer 
 "nmap <F8> :SrcExplToggle<CR>
@@ -820,16 +816,6 @@ let @s = temp
 endfunction
 
 """"""""""""""""""""""""""""""
-" => pathogen section
-""""""""""""""""""""""""""""""
-execute pathogen#infect()
-
-""""""""""""""""""""""""""""""
-" => gundo section
-""""""""""""""""""""""""""""""
-map <leader>u :GundoToggle<CR>
-
-""""""""""""""""""""""""""""""
 " => Python section
 """"""""""""""""""""""""""""""
 " we can type 'za' to open and close a fold inside a method
@@ -865,6 +851,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
+Bundle 'biluncloud/desertEx'
 
 
 " vim-scripts repos
@@ -874,6 +861,7 @@ Bundle "AutoClose"
 "
 " non-GitHub repos
 " e.g., Bundle 'git://git.wincent.com/command-t.git'
+Bundle "http://github.com/sjl/gundo.vim.git"
 "
 " Git repos on your local machine (i.e. when working on your own plugin)
 " e.g., Bundle 'file:///Users/gmarik/path/to/plugin'
@@ -1015,7 +1003,7 @@ endif
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='$VIM/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='$VIM/vimfiles/bundle/snipmate-snippets/snippets'
 
 
 """"""""""""""""""""""""""""""
@@ -1055,3 +1043,13 @@ endfunction
 autocmd FileType int-* call s:interactive_settings()
 function! s:interactive_settings()
 endfunction
+
+""""""""""""""""""""""""""""""
+" => gundo section
+""""""""""""""""""""""""""""""
+map <leader>u :GundoToggle<CR>
+
+""""""""""""""""""""""""""""""
+" => desertEx section
+""""""""""""""""""""""""""""""
+colorscheme desertEx
