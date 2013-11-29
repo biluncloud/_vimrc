@@ -676,7 +676,7 @@ colo desertEx
 
 " 下面的是用Source Explorer
 " // The switch of the Source Explorer 
-nmap <F8> :SrcExplToggle<CR>
+"nmap <F8> :SrcExplToggle<CR>
 
 " // Set the height of Source Explorer window 
 let g:SrcExpl_winHeight = 8 
@@ -818,4 +818,29 @@ norm! gv"sy
 let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
 let @s = temp
 endfunction
+
+""""""""""""""""""""""""""""""
+" => pathogen section
+""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
+""""""""""""""""""""""""""""""
+" => gundo section
+""""""""""""""""""""""""""""""
+map <leader>u :GundoToggle<CR>
+
+""""""""""""""""""""""""""""""
+" => Python section
+""""""""""""""""""""""""""""""
+" we can type 'za' to open and close a fold inside a method
+set foldmethod=indent
+set foldlevel=99
+
+" pep8
+let g:pep8_map='<leader>c'
+
+" supertab
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
 

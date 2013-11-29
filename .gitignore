@@ -1,1 +1,3 @@
-*.swp
+*
+!_vimrc
+!.gitignore
