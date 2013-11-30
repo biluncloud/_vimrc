@@ -817,7 +817,6 @@ endfunction
 
 """"""""""""""""""""""""""""""
 " => Python section
-""""""""""""""""""""""""""""""
 " we can type 'za' to open and close a fold inside a method
 set foldmethod=indent
 set foldlevel=99
@@ -830,9 +829,8 @@ au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => bundle section
-""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved
 filetype off                  " required!
 
@@ -852,12 +850,16 @@ Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'biluncloud/desertEx'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
 
 
 " vim-scripts repos
 " e.g., Bundle 'L9'
 Bundle "snipmate-snippets"
 Bundle "AutoClose"
+Bundle "a.vim"
 "
 " non-GitHub repos
 " e.g., Bundle 'git://git.wincent.com/command-t.git'
@@ -877,16 +879,15 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle commands are not allowed.
-""""""""""""""""""""""""""""""
+"
 " => bundle section end
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set for plugins
 "
 """"""""""""""""""""""""""""""
 " => neocomplcache section
-""""""""""""""""""""""""""""""
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -980,7 +981,6 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 """"""""""""""""""""""""""""""
 " => neosnippet section
-""""""""""""""""""""""""""""""
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -1008,7 +1008,6 @@ let g:neosnippet#snippets_directory='$VIM/vimfiles/bundle/snipmate-snippets/snip
 
 """"""""""""""""""""""""""""""
 " => vimshell section
-""""""""""""""""""""""""""""""
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_enable_smart_case = 1
@@ -1046,10 +1045,12 @@ endfunction
 
 """"""""""""""""""""""""""""""
 " => gundo section
-""""""""""""""""""""""""""""""
 map <leader>u :GundoToggle<CR>
 
 """"""""""""""""""""""""""""""
 " => desertEx section
-""""""""""""""""""""""""""""""
 colorscheme desertEx
+
+""""""""""""""""""""""""""""""
+" => tagbar section
+nmap <F12> :TagbarToggle<CR>
