@@ -1,0 +1,63 @@
+" set langmenu=zh_CN
+" let $LANG = 'zh_CN.UTF-8'
+" source $VIMRUNTIME/delmenu.vim
+" source $VIMRUNTIME/menu.vim
+" set enc=utf-8
+" set fenc=utf-8
+" set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set fileencodings=utf-8,gbk,cp936,latin-1
+
+
+" General {
+
+    " Window {
+        " start gvim maximized {
+            if has("win32")
+                if has("autocmd")
+                au GUIEnter * simalt ~x
+                endif
+            endif
+        " }
+    " }
+
+    " Search {
+        " search the selected string
+        xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+        xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+        function! s:VSetSearch()
+        let temp = @s
+        norm! gv"sy
+        let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+        let @s = temp
+        endfunction
+    " }
+
+    " Fold {
+        " we can type 'za' to open and close a fold inside a method
+        set foldmethod=indent
+        set foldlevel=99
+    " }
+
+    " Use the arrows to something useful {
+        map <right> :bn<cr>
+        map <left> :bp<cr>
+    " }
+    
+    " colorscheme
+    colorscheme desertEx " use the desertEx
+
+" }
+
+
+" Plugins {
+
+    " vim-signify {
+       " we only use git here
+        let g:signify_vcs_list = [ 'git' ]
+    " }
+
+    Bundle 'Valloric/YouCompleteMe'
+    UnBundle 'Shougo/neocomplcache'
+    UnBundle 'mhinz/vim-signify'
+    let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" }
