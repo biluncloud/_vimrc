@@ -3,17 +3,7 @@ _vimrc
 
 My config file of gVim
 
-The plugins needed by this config file:
-1. loopupfile
-2. ctags
-3. cscope
-4. A.vim
-5. cscope_map
-6. genutils.vim
-7. taglist.vim
-8. onmicppcomplete
-9. SrcExpl
-
-
-The color scheme:
-desertEx
+This is the local vimrc set of [spf13-vim](https://github.com/spf13/spf13-vim), here is the usage:
+1. Create a link of .vimrc.local to %HOME%/.vimrc.local
+2. Run :BundleInstall in gvim
+3. Copy all the files in YouCompleteMe folder to %HOME%/.vim/bundle/YouCompleteMe/python folder. It is a better auto-complete plugin than neocomplcache
