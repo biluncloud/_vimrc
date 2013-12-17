@@ -1,14 +1,15 @@
-" set langmenu=zh_CN
-" let $LANG = 'zh_CN.UTF-8'
-" source $VIMRUNTIME/delmenu.vim
-" source $VIMRUNTIME/menu.vim
-" set enc=utf-8
-" set fenc=utf-8
-" set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set fileencodings=utf-8,gbk,cp936,latin-1
-
 
 " General {
+    " Encoding {
+        set langmenu=zh_CN
+        let $LANG = 'zh_CN.UTF-8'
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+        set enc=utf-8
+        set fenc=utf-8
+        set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+        set fileencodings=utf-8,gbk,cp936,latin-1
+    " }
 
     " Window {
         " start gvim maximized {
@@ -43,6 +44,8 @@ set fileencodings=utf-8,gbk,cp936,latin-1
         map <left> :bp<cr>
     " }
     
+    set wrap
+    
     " colorscheme
     colorscheme desertEx " use the desertEx
 
@@ -54,6 +57,14 @@ set fileencodings=utf-8,gbk,cp936,latin-1
     " vim-signify {
        " we only use git here
         let g:signify_vcs_list = [ 'git' ]
+    " }
+
+    " controlP {
+    " ignore the specific files
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+            \ 'file': '\v\.(exe|so|dll|ima|IceHead|raw)$',
+            \ }
     " }
 
     Bundle 'Valloric/YouCompleteMe'

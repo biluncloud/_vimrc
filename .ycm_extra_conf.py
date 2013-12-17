@@ -81,6 +81,7 @@ flags = [
 './tests/gmock',
 '-isystem',
 './tests/gmock/include'
+# Here are the flags for my self
 ]
 
 
