@@ -1,0 +1,9 @@
+" select bundles that needed {
+    let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'misc']
+
+    " new bundles {
+        Bundle 'Valloric/YouCompleteMe'
+        Bundle 'SirVer/ultisnips'
+        Bundle 'ervandew/supertab'
+    " }
+" }

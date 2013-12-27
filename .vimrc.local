@@ -46,9 +46,12 @@
         map <right> :bn<cr>
         map <left> :bp<cr>
     " }
-    
+
+    " Enable wrap
     set wrap
-    
+    " Support BundleInstall on Windows
+    set noshellslash
+
     " colorscheme
     " colorscheme desertEx " use the desertEx
 
@@ -70,11 +73,20 @@
             \ }
     " }
 
-    Bundle 'Valloric/YouCompleteMe'
-    UnBundle 'Shougo/neocomplcache'
-    let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+    " auto complete {
+        " enable YouCompleteMe {
+            ""Bundle 'Valloric/YouCompleteMe'
+            let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+            let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+            let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>'] 
+            nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+        " }
+        
+        " enable UltiSnippets {
+        " }
 
-    UnBundle 'mhinz/vim-signify'
-
-    Bundle 'SirVer/ultisnips'
+        " enable SuperTab {
+            let g:SuperTabDefaultCompletionType = '<C-Tab>'
+        " }
+    " }
 " }
