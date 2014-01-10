@@ -80,8 +80,14 @@ flags = [
 '-isystem',
 './tests/gmock',
 '-isystem',
-'./tests/gmock/include'
+'./tests/gmock/include',
 # Here are the flags for my self
+'-isystem',
+'C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/include',
+'-isystem',
+'C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/atlmfc/include',
+'-isystem',
+'C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Include'
 ]
 
 
