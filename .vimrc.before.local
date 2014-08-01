@@ -10,6 +10,10 @@
         " To disable omni complete, add the following to your .vimrc.before.local file:
         let g:spf13_no_omni_complete = 1
     " }
+    " Enable airline fonts {
+        let g:airline_powerline_fonts = 1
+    " }
+
     
     " select bundles that needed {
     let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc']

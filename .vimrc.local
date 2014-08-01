@@ -12,6 +12,20 @@
 
         " set font for Chinese characters
         set guifontwide=SimHei:h10
+
+        " For airline {
+            " For powerline fonts, refer to:
+            " http://www.codejury.com/consolas-font-in-vim-powerline-windows/
+            set guifont=Consolas_for_Powerline_FixedD:h9,Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            let g:airline_symbols = {}
+            let g:airline_left_sep = "\u2b80" "use double quotes here
+            let g:airline_left_alt_sep = "\u2b81"
+            let g:airline_right_sep = "\u2b82"
+            let g:airline_right_alt_sep = "\u2b83"
+            let g:airline_symbols.branch = "\u2b60"
+            let g:airline_symbols.readonly = "\u2b64"
+            let g:airline_symbols.linenr = "\u2b61"
+        " }
     " }
 
     " Window {
@@ -54,7 +68,6 @@
 
     " colorscheme
     " colorscheme desertEx " use the desertEx
-
 " }
 
 
@@ -68,9 +81,8 @@
     " controlP {
     " ignore the specific files
         let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll|ima|IceHead|raw)$',
-            \ }
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$|FTFRoot',
+            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$|\.ima$|\.IceHead$|\.raw$' }
     " }
 
     " auto complete {
@@ -78,38 +90,57 @@
             " Bundle 'Valloric/YouCompleteMe'
             " Enable preview window for more information
             let g:ycm_add_preview_to_completeopt = 1
+            " Set global conf file path
             let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-            nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+            " Enable completion in comments
+            let g:ycm_complete_in_comments = 1
+            " Disable cache, generate completion always
+            let g:ycm_cache_omnifunc = 0
+            " Completion for identifiers
+            let g:ycm_seed_identifiers_with_syntax = 1
+            " Change the invoke hotkey to Alt+;
+            let g:ycm_key_invoke_completion = '<M-;>'
+            " Disable confirmation of loading conf
+            let g:ycm_confirm_extra_conf = 0
+            " nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+            " Using Alt+d is much quicker
+            nmap <M-d> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
+
+            " Remap Ultisnips for compatibility for YCM, Alt is mucher easier
+            " comparing to Ctrl to press
+            let g:UltiSnipsExpandTrigger = '<M-j>'
+            let g:UltiSnipsJumpForwardTrigger = '<M-j>'
+            let g:UltiSnipsJumpBackwardTrigger = '<M-k>'
         " }
-    " }
 
-    " OmniComplete {
-        " This configuration is copied from .vimrc, but we don't want
-        " preview window to be closed when we haven't finished inserting.
-        " So we distable spf13_no_omni_complete in .vimrc.before.local and
-        " then put the configuration here with autoclose preview window
-        " excluded.
-        if has("autocmd") && exists("+omnifunc")
-            autocmd Filetype *
-                \if &omnifunc == "" |
-                \setlocal omnifunc=syntaxcomplete#Complete |
-                \endif
-        endif
+        " OmniComplete {
+            " This configuration is copied from .vimrc, but we don't want
+            " preview window to be closed when we haven't finished inserting.
+            " So we distable spf13_no_omni_complete in .vimrc.before.local and
+            " then put the configuration here with autoclose preview window
+            " excluded.
+            if has("autocmd") && exists("+omnifunc")
+                autocmd Filetype *
+                    \if &omnifunc == "" |
+                    \setlocal omnifunc=syntaxcomplete#Complete |
+                    \endif
+            endif
 
-        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-        " Some convenient mappings
-        inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-        inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-        inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+            " Some convenient mappings
+            inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+            inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
-        " Automatically open and close the popup menu / preview window
-        " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        set completeopt=menu,preview,longest
+            " Automatically open and close the popup menu / preview window
+            " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+            set completeopt=menu,preview,longest
+        " }
     " }
 " }
