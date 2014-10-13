@@ -14,7 +14,6 @@
         let g:airline_powerline_fonts = 1
     " }
 
-    
     " select bundles that needed {
     let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc']
     " }
