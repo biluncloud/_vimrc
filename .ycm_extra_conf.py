@@ -68,6 +68,8 @@ flags = [
 '-isystem',
 '../llvm/include',
 '-isystem',
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/',
+'-isystem',
 '../llvm/tools/clang/include',
 '-I',
 '.',
