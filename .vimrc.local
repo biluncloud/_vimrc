@@ -16,7 +16,7 @@
         " For airline {
             " For powerline fonts, refer to:
             " http://www.codejury.com/consolas-font-in-vim-powerline-windows/
-            set guifont=Consolas_for_Powerline_FixedD:h9,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h11
+            set guifont=Consolas_for_Powerline_FixedD:h9,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h11,Monaco:h11
             let g:airline_symbols = {}
             let g:airline_left_sep = "\u2b80" "use double quotes here
             let g:airline_left_alt_sep = "\u2b81"
@@ -65,6 +65,7 @@
     set wrap
     " Support BundleInstall on Windows
     set noshellslash
+    set nospell
 
     " colorscheme
     " colorscheme desertEx " use the desertEx
@@ -141,6 +142,12 @@
             " Automatically open and close the popup menu / preview window
             " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
             set completeopt=menu,preview,longest
+        " }
+    " }
+
+    " Dash {
+        " start gvim maximized {
+            Bundle 'rizzatti/dash.vim'
         " }
     " }
 " }
