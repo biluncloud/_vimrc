@@ -16,15 +16,15 @@
         " For airline {
             " For powerline fonts, refer to:
             " http://www.codejury.com/consolas-font-in-vim-powerline-windows/
-            set guifont=Consolas_for_Powerline_FixedD:h9,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h11,Monaco:h11
-            let g:airline_symbols = {}
-            let g:airline_left_sep = "\u2b80" "use double quotes here
-            let g:airline_left_alt_sep = "\u2b81"
-            let g:airline_right_sep = "\u2b82"
-            let g:airline_right_alt_sep = "\u2b83"
-            let g:airline_symbols.branch = "\u2b60"
-            let g:airline_symbols.readonly = "\u2b64"
-            let g:airline_symbols.linenr = "\u2b61"
+            set guifont=Meslo\ LG\ S\ for\ Powerline:h11,Source\ Code\ Pro\ for\ Powerline:h11,Andale_Mono:h11,Menlo:h11,Consolas:h11,Courier_New:h11,Monaco:h11
+            " let g:airline_symbols = {}
+            " let g:airline_left_sep = "\u2b80" "use double quotes here
+            " let g:airline_left_alt_sep = "\u2b81"
+            " let g:airline_right_sep = "\u2b82"
+            " let g:airline_right_alt_sep = "\u2b83"
+            " let g:airline_symbols.branch = "\u2b60"
+            " let g:airline_symbols.readonly = "\u2b64"
+            " let g:airline_symbols.linenr = "\u2b61"
         " }
     " }
 
