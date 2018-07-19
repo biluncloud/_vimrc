@@ -69,6 +69,7 @@
 
     " colorscheme
     " colorscheme desertEx " use the desertEx
+    set clipboard=unnamed
 " }
 
 
@@ -112,6 +113,9 @@
             let g:UltiSnipsExpandTrigger = '<C-j>'
             let g:UltiSnipsJumpForwardTrigger = '<C-j>'
             let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+            " Syntastics
+            let g:syntastic_always_populate_loc_list = 1
         " }
 
         " OmniComplete {
